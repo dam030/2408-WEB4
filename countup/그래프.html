@@ -47,8 +47,6 @@
         <p class="time">t</p>
         <p class="value">v</p>
         <div class="dots">
-            <!-- <div class="dot"></div>
-            <div class="dot"></div> -->
         </div>
     </div>
 
@@ -59,7 +57,24 @@
         // dot는 자바스크립트로 만들어야하며,
         // 좌표는 진행도(t)와 진행도와 함수를 이용해 얻은 값(v)을 이용합니다.
         // dot의 갯수는 자유롭게 설정할 수 있게 만들어주세요.
-        const dots = document.querySelector('.dots')
-    </script>
+        const dotsContainer = document.querySelector('.dots')
+        const frame = 60;
+        const width = 300;
+        const height = 200;
+
+        for(let i = 0; i <= frame; i++){
+            const dot = document.createElement('div')
+            dot.classList.add('dot')
+            dotsContainer.appendChild(dot);
+            setTimeout(() => {
+                dot.style.bottom = `${i*(height/frame)}px`
+                dot.style.left = `${i*(width/frame)}px`
+            }, i/frame * 1000);
+        }
+
+        function easeInOutQuint(x) {
+            return x < 0.5 ? 16 * x * x * x * x * x : 1 - Math.pow(-2 * x + 2, 5) / 2;
+        }
+        </script>
 </body>
 </html>
