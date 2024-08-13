@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>그래프</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .graph {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            border: solid black;
+            border-width: 0 0 1px 1px;
+            margin: 100px;
+        }
+
+        .time {
+            position: absolute;
+            right: 0px;
+            top: 100%;
+        }
+
+        .value {
+            position: absolute;
+            right: calc(100% + 5px);
+        }
+
+        .dot {
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background-color: red;
+            position: absolute;
+            transform: translate(-50%,50%);
+            bottom: 0;
+            left: 0;
+        }
+        .dot.hide {
+            opacity: 0;
+            transition: 1s;
+        }
+    </style>
+</head>
+<body>
+    <div class="graph">
+        <p class="time">t</p>
+        <p class="value">v</p>
+        <div class="dots"></div>
+    </div>
+    <div class="button">
+        <button class="hide">hide</button>
+    </div>
+
+    <script>
+        // https://easings.net/ko
+        // 마음에 드는 그래프 구현하기
+        // dot를 이용해 그래프를 그려봅시다
+        // dot는 자바스크립트로 만들어야하며,
+        // 좌표는 진행도(t)와 진행도와 함수를 이용해 얻은 값(v)을 이용합니다.
+        // dot의 갯수는 자유롭게 설정할 수 있게 만들어주세요.
+        // const graph = dotDount.querySelector('.graph')
+        const dots = document.querySelector('.dots')
+        const dotDount = 100;
+
+        for(let i = 0; i <= dotDount; i++){
+            const 진행도 = 1/dotDount * i;
+            const dot = document.createElement('div')
+            dot.classList.add('dot')
+            dots.appendChild(dot);
+            dot.style.backgroundColor = 'blue'
+
+            setTimeout(() => {
+                dot.style.bottom = `${easeInBounce(진행도)*100}%`
+                dot.style.left = `${진행도*100}%`
+            }, i/dotDount * 1000);
+        }
+
+        for(let i = 0; i <= dotDount; i++){
+            const 진행도 = 1/dotDount * i;
+            const dot = document.createElement('div')
+            dot.classList.add('dot')
+            dots.appendChild(dot);
+
+            setTimeout(() => {
+                dot.style.bottom = `${easeInCirc(진행도)*100}%`
+                dot.style.left = `${진행도*100}%`
+            }, i/dotDount * 1000);
+        }
+
+        // 해당 사이트의 함수를 사용할 때는 0~1 사이의 값을 나타내야 적용이 가능하다
+        function easeInCirc(x) {
+            return 1 - Math.sqrt(1 - Math.pow(x, 2));
+        }
+
+        function easeOutBounce(x) {
+            const n1 = 7.5625;
+            const d1 = 2.75;
+
+            if (x < 1 / d1) {
+                return n1 * x * x;
+            } else if (x < 2 / d1) {
+                return n1 * (x -= 1.5 / d1) * x + 0.75;
+            } else if (x < 2.5 / d1) {
+                return n1 * (x -= 2.25 / d1) * x + 0.9375;
+            } else {
+                return n1 * (x -= 2.625 / d1) * x + 0.984375;
+            }
+        }
+
+        function easeInBounce(x) {
+            return 1 - easeOutBounce(1 - x);
+        }
+        </script>
+</body>
+</html>
