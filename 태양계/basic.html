@@ -18,23 +18,36 @@
             position: absolute;
             border-radius: 50%;
             transform: translate(-50%,-50%);
-            top: 50%;
-            left: 50%;
         }
 
         .sun{
             width: 200px;
             height: 200px;
             background-color: red;
+            left: 50%;
+            top: 50%;
         }
 
         .vinus {
             width: 20px;
             height: 20px;
             background-color: yellow;
-            transform-origin: center calc(10px + 200px);
+            transform-origin: 0px calc(200px + 10px);
+            left: 50%;
+            top: 0%;
+
+            /* animation: revolution 2s infinite linear; */
 
         }
+
+        /* @keyframes vinusRevolution {
+            0%{
+                transform: translate(-50%,calc(-50% - 200px)) rotate(0deg);
+            }
+            100%{
+                transform: translate(-50%,calc(-50% - 200px)) rotate(360deg);
+            }
+        } */
 
         @keyframes revolution {
             0%{
@@ -44,15 +57,78 @@
                 transform: translate(-50%,-50%) rotate(360deg);
             }
         }
+
+        .공전궤도 {
+            width: 350px;
+            height: 350px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            border: 1px solid white;
+            border-radius: 50%;
+            box-sizing: border-box;
+            animation: revolution infinite 3s linear;
+        }
+
+        .earth-line {
+            width: 500px;
+            height: 500px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            border: 1px solid white;
+            border-radius: 50%;
+            box-sizing: border-box;
+            animation: revolution infinite 4s linear;
+        }
+
+        .earth{
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: blue;
+            position: absolute;
+            left: 50%;
+            top: 0%;
+            transform: translate(-50%,-50%);
+        }
+
+        .moon-line {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            border: 1px solid white;
+            border-radius: 50%;
+            box-sizing: border-box;
+            animation: revolution infinite 2.5s linear;
+        }
+
+        .moon {
+            width: 10px;
+            height: 10px;
+            background-color: #bbb;
+            position: absolute;
+            left: 50%;
+            top: 0%;
+        }
     </style>
 </head>
 <body>
-    <div class="sun orb">
-
+    <div class="sun orb"></div>
+    <div class="공전궤도">
+        <div class="vinus orb"></div>
     </div>
-    <div class="vinus orb">
-        
+    <div class="earth-line">
+        <div class="earth orb">
+            <div class="moon-line">
+                <div class="moon orb"></div>
+            </div>
+        </div>
     </div>
-    <!-- 지구를 도는 달과 태양을 도는 지구 만들기 -->
 </body>
 </html>
