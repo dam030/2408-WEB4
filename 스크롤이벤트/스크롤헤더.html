@@ -50,6 +50,13 @@
                 header.classList.remove('hide')
             }
             nowheight = window.scrollY
+
+            if(window.scrollY > ratio) {
+                header.classList.add('scrolled')
+            }else {
+                header.classList.remove('scrolled')
+
+            }
         })
     </script>
 </body>
