@@ -10,54 +10,28 @@
             padding: 0;
         }
 
-        img{
+        img {
+            display: block;
             padding: 0;
             margin: 0;
-        }
-
-        body {
-            height: 5000px;
         }
 
         header {
             position: fixed;
             width: 100%;
             height: 60px;
-            background-color: #00000090; 
-            transition: 0.3s;
+
+            transition: 0.5s;
         }
 
-        header.hide{
+        header.hide {
+            opacity: 0;
             transform: translateY(-100%);
-            background-color: #00000000;
         }
 
         header.scrolled {
             background-color: rgb(255, 255, 255, 0.86);
             border-bottom: 1px solid #ccc;
-        }
-
-        .header-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-
-        .logo {
-            width: 112px;
-            position: absolute;
-            top: 50%;
-            left: 40px;
-            transform: translate(0%, -50%);
-            fill:#fff;
-        }
-                
-        span {
-            width: 26px;
-            height: 3px;
-            background-color: #fff;
-            display: block;
-            right: 5%;
         }
 
         header.scrolled .logo {
@@ -67,20 +41,75 @@
         header.scrolled span {
             background-color: #00B8FF;
         }
+
+        .header-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 32px;
+            box-sizing: border-box;
+            border-bottom: 1px solid transparent;
+        }
+
+        .logo {
+            width: 112px;
+            fill:#fff;
+        }
         
-        .hamberger span:nth-child(1) {
-            position: absolute;
-            top: 39%;
-            right: 6%;
+        .hamberger {
+            width: 36px;
+            height: 36px;
+            padding: 3px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .hamberger span {
+            width: 26px;
+            height: 3px;
+            background-color: #fff;
+            display: block;
         }
 
-        .hamberger span:nth-child(2) {
-            position: absolute;
-            bottom: 39%;
+        .hamberger span:last-child {
+            margin-left: auto;
         }
 
-        .main-img {
+        #intro {
+            background-image: url(img/main_visual_fullscreen.jpg);
+            background-size: cover;
+            /* width: 100%; */
             height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 64px;
+            color: #fff;
+            text-align: center;
+            text-shadow: 1px 1px 4px #00000090;
+        }
+
+        #temp {
+            height: 1000px;
+        }
+
+        .main-text {
+            display: flex;
+        }
+
+        .main-text span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #00B8FF;
         }
     </style>
 </head>
@@ -114,9 +143,27 @@
             </div>
         </div>
     </header>
-    <section>
-        <div>
-            <img src="img/main_visual_fullscreen.jpg" alt="" class="main-img">
+    <section id="intro">
+        <h1>차가 필요한<br>모든 순간, 쏘카</h1>
+    </section>
+    <section id="temp">
+        <div class="temp-container">
+            <div class="contents">
+                <div class="textarea">
+                    <div class="main-text">
+                        <h2>메인</h2>
+                        <span></span>
+                    </div>
+                    <p>
+                        부재<br>
+                        부재<br>
+                        부재
+                    </p>
+                </div>
+                <div class="main-img">
+                    <figure></figure>
+                </div>
+            </div>
         </div>
     </section>
 
