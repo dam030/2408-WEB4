@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>구간진행도2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .space {
+            height: 2000px;
+        }
+
+        #target {
+            height: 2000px;
+            background-image: linear-gradient(0deg, rgb(132, 0, 255), pink);
+        }
+
+        .progress {
+            position: fixed;
+            top: 32px;
+            right: 32px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        </style>
+</head>
+<body>
+    <div class="space"></div>
+    <section id="target"></section>
+    <div class="space"></div>
+    <div class="progress">0%</div>
+
+    <script>
+        const target = document.getElementById('target')
+        const progress = document.querySelector('.progress')
+
+        window.addEventListener('scroll', ()=> {
+            const pos = target.getBoundingClientRect();
+
+            const 진행도 = ((pos.top*-1)/pos.height*2);
+            
+            // if(진행도 < 0){
+            //     progress.innerText = `0%`
+            // }else if(진행도 > 100){
+            //     progress.innerText = `100%`                
+            // }else {
+            //     progress.innerText = `${parseInt(진행도)}%`
+            // }
+            const ratio = clamp(진행도,0,1)
+            progress.innerText = `${parseInt(ratio*100)}%`
+        })
+
+        function clamp(value,min,max){
+            return Math.max(Math.min(value,max),min)
+        }
+    </script>
+</body>
+</html>
