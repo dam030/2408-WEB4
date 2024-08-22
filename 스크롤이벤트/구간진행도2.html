@@ -16,7 +16,7 @@
 
         #target {
             height: 2000px;
-            background-image: linear-gradient(0deg, rgb(132, 0, 255), pink);
+            background-image: linear-gradient(0deg, pink, rgb(132, 0, 255));
         }
 
         .progress {
@@ -41,7 +41,7 @@
         window.addEventListener('scroll', ()=> {
             const pos = target.getBoundingClientRect();
 
-            const 진행도 = ((pos.top*-1)/pos.height*2);
+            const 진행도 = ((pos.top*-1)/(pos.height-window.innerHeight));
             
             // if(진행도 < 0){
             //     progress.innerText = `0%`
