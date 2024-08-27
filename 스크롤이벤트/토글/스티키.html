@@ -66,9 +66,9 @@
 </head>
 <body>
     <section class="space"></section>
-    <section id="target">
+    <!-- <section id="target">
         <div class="view">
-            <div class="horizon">
+            <div class="horizon"> -->
                 <ul class="wrapper">
                     <li class="content"></li>
                     <li class="content"></li>
@@ -78,46 +78,78 @@
                     <li class="content"></li>
                     <li class="content"></li>
                 </ul>
-            </div>
+
+                <!-- 
+                #라이브러리화
+
+                나는 실제로 html에 ul>li*n만 작성할것이다.
+                이때 가로스크롤 구현에 필요한
+
+                target, view, horizon는 자동으로 생성 되어야 한다.
+
+                js에는 ul.wrapper만 가져올수 있게
+                -->
+            <!-- </div>
         </div>
-    </section>
+    </section> -->
     <section class="space"></section>
 
     <script>
+        const wrapper = document.querySelector('.wrapper');
 
-        const moveHorizonScroll =()=>{
+        const target = document.createElement('section');
+        target.classList.add('target');
+        const view = document.createElement('div');
+        view.classList.add('view');
+        const horizon = document.createElement('div');
+        horizon.classList.add('horizon');
 
-            const pos = scrollContainer.getBoundingClientRect();
-            const range = window.innerWidth - horizon.clientWidth;
-            let targetPos;
+        target.appendChild(view);
+        view.appendChild(horizon);
+        horizon.appendChild(wrapper);
 
-            if(pos.top > 0){
-                targetPos = 0;
-            }else if(pos.top < range) {
-                targetPos = range;
-            }else {
-                targetPos = pos.top;
-            }
+        console.log(target);
+        
+        // const applyPos = (pos) => {
+        //     horizon.style.transform = `translateX(${pos}px)`
+        // }
 
-            horizon.style.transform = `translateX(${targetPos}px)`
-            }
+        // const moveHorizonScroll =()=>{
+
+        //     const pos = scrollContainer.getBoundingClientRect();
+        //     const range = window.innerWidth - horizon.clientWidth;
+        //     let targetPos;
+
+        //     if(pos.top > 0){
+        //         targetPos = 0;
+        //     }else if(pos.top < range) {
+        //         targetPos = range;
+        //     }else {
+        //         targetPos = pos.top;
+        //     }
 
 
-        const scrollContainer = document.getElementById('target');
-        const scrollbarWidth = window.innerWidth - document.body.clientWidth
-        const horizon = document.querySelector('.horizon');
+        //     if(window.innerWidth < brakePoint){
+        //         applyPos(0)
+        //     }else {
+        //         applyPos(targetPos)
+        //     }
+        // }
 
-        scrollContainer.style.height = `${horizon.getBoundingClientRect().width - window.innerWidth + window.innerHeight + scrollbarWidth}px`;
+        // const brakePoint = 1400;
+        // const scrollContainer = document.getElementById('target');
+        // const scrollbarWidth = window.innerWidth - document.body.clientWidth
+        // const horizon = document.querySelector('.horizon');
 
-        window.addEventListener('resize',()=>{
-            scrollContainer.style.height = `${horizon.getBoundingClientRect().width - window.innerWidth + window.innerHeight + scrollbarWidth}px`;
 
-            window.removeEventListener('scroll',moveHorizonScroll)
-            
-            if(window.innerWidth>1400) {
-                window.addEventListener('scroll',moveHorizonScroll)
-            }
-        })
+        // moveHorizonScroll()
+
+        // scrollContainer.style.height = `${horizon.getBoundingClientRect().width - window.innerWidth + window.innerHeight + scrollbarWidth}px`;
+        // window.addEventListener('scroll',moveHorizonScroll)
+        // window.addEventListener('resize',()=>{
+        //     scrollContainer.style.height = `${horizon.getBoundingClientRect().width - window.innerWidth + window.innerHeight + scrollbarWidth}px`;
+        //     moveHorizonScroll()
+        // })
 
     </script>
 </body>
