@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>모달index</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 5000px;
+        }
+
+        .modal {
+            width: 300px;
+            height: 200px;
+            border: 1px solid pink;
+            
+            display: none;
+            position: fixed;
+            /* 스크롤이 있을 수 있는 창일 수 있으니 앱솔루트보다는 픽스드가 좋다 */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+    모달
+    
+    새 창을 띄우는 기존의 팝업을 대체하기 위한 장치
+    기존에 탐색하던 웹에서 벗어나지 않고 새로운 컨텐츠를 보여줄 수 있어
+    사용자 경험에 긍정적인 영향을 줄 수 있다.
+     -->
+
+    <div class="modal">
+        모달창
+        <button class="close">x</button>
+    </div>
+
+    <button class="open">모달열기</button>
+
+    <script>
+        const modal = document.querySelector('.modal')
+        const openButton = document.querySelector('.open')
+        const closeButton = document.querySelector('.close')
+
+        openButton.addEventListener('click',()=>{
+            modal.style.display = 'block'
+        })
+        closeButton.addEventListener('click',()=>{
+            modal.style.display = 'none'
+        })
+    </script>
+</body>
+</html>
